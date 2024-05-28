@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
-    <title>AluraBank - Registro</title>
+    <title>UPBank - Registro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,7 +26,7 @@
   <body>
     <header class="encabezado">
       <h1 class="encabezado__logo-inicio">
-        Alura<span class="encabezado__logo-final">Bank</span>
+        UP<span class="encabezado__logo-final">Bank</span>
       </h1>
       <ul class="encabezado-lista">
         <li class="encabezado-lista__item">
@@ -59,7 +59,7 @@
 
     <section class="banner">
       <h3 class="banner__titulo">
-        ¡Alura-cuenta es el primer paso hacia la libertad financiera!
+        ¡UP-cuenta es el primer paso hacia la libertad financiera!
       </h3>
     </section>
 
@@ -83,14 +83,14 @@
 
         <form class="principal__formulario" data-formulario>
           <fieldset class="formulario__campo">
-            <label class="campo__etiqueta" for="nombre">Nombre</label>
-            <input name="nombre" id="nombre" class="campo__completo" />
+            <label class="campo__etiqueta" for="nombre" >Nombre</label>
+            <input name="nombre" id="nombre" class="campo__completo" type="text" minlength="8" required/>
             <span class="mensaje-error"></span>
           </fieldset>
 
           <fieldset class="formulario__campo">
             <label class="campo__etiqueta" for="email">E-mail</label>
-            <input name="email" id="email" class="campo__completo" />
+            <input name="email" id="email" class="campo__completo" type="email" minlength="5" required/>
             <span class="mensaje-error"></span>
           </fieldset>
           <fieldset class="formulario__campo">
@@ -101,7 +101,7 @@
               name="identificacion"
               id="identificacion"
               class="campo__completo campo__completo--menor"
-            />
+            type="text" minlength="8" required/>
             <span class="mensaje-error"></span>
           </fieldset>
           <fieldset class="formulario__campo">
@@ -112,7 +112,7 @@
               name="cuil"
               id="cuil"
               class="campo__completo campo__completo--menor"
-            />
+            type="text" minlength="10" maxlength="15" pattern="\d{2}[-\/]?\d{8}[-\/]?\d{1}" required/>
             <span class="mensaje-error"></span>
           </fieldset>
           <fieldset class="formulario__campo">
@@ -123,11 +123,11 @@
               name="fecha_nacimiento"
               id="fecha_nacimiento"
               class="campo__completo campo__completo--menor"
-            />
+            type="date" required />
             <span class="mensaje-error"></span>
           </fieldset>
           <fieldset class="formulario__terminos">
-            <input name="terminos" class="terminos__input" />
+            <input name="terminos" class="terminos__input" type="checkbox" required/>
             <p class="terminos__texto">
               He leído y conozco las condiciones para el tratamiento de mis
               datos descrito en las <a href="#">Políticas de Privacidad</a>.
@@ -141,6 +141,7 @@
               class="formulario__boton"
               id="enviar"
               data-boton-enviar
+              type="submit"
             />
             <span class="mensaje-error"></span>
           </div>
@@ -150,7 +151,7 @@
 
     <footer class="pie_pagina">
       <section class="pie_pagina__empresa">
-        <h2 class="pie_pagina__titulo">AluraBank</h2>
+        <h2 class="pie_pagina__titulo">UPBank</h2>
         <ul class="pie_pagina__lista">
           <li>
             <a href="#" class="pie_pagina__link">Sobre</a>
@@ -181,13 +182,13 @@
         <h2 class="pie_pagina__titulo">Contacto</h2>
         <ul class="pie_pagina__lista">
           <li>
-            <a href="#" class="pie_pagina__link">0800 444 ALURA</a>
+            <a href="#" class="pie_pagina__link">0800 444 UP</a>
           </li>
           <li>
-            <a href="#" class="pie_pagina__link">ayuda@alurabank.com</a>
+            <a href="#" class="pie_pagina__link">ayuda@UPbank.com</a>
           </li>
           <li>
-            <a href="#" class="pie_pagina__link">defensoria@alurabank.com</a>
+            <a href="#" class="pie_pagina__link">defensoria@UPbank.com</a>
           </li>
         </ul>
       </section>
@@ -200,9 +201,10 @@
           <li><img src="../img/instagram.png" alt="ícono de instagram" /></li>
         </ul>
         <h2 class="pie_pagina__logo">
-          <span class="pie_pagina__logo--negrito">Alura</span>Bank
+          <span class="pie_pagina__logo--negrito">UP</span>Bank
         </h2>
       </section>
     </footer>
+    <script src="../js/main.js" type="module"></script>
   </body>
 </html>
