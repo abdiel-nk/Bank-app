@@ -1,18 +1,51 @@
 import esUnCuil from "./validar-cuil.js"
-import esMayor from "./validar-edad.js";
+import esMayor from "./validar-edad.js"
+import { tiposError, mensajes } from "./customeError.js"
 
 const campoFormulario = document.querySelectorAll("[required]");
+const formulario = document.querySelector("[data-formulario]");
 
-campoFormulario.forEach((campo)=>{
-    campo.addEventListener("blur",()=>verificarCampo(campo))
-    campo.addEventListener("invalid", evento =>evento.preventDefault())
+formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const listRespuestas = {
+        nombre: e.target.elements["nombre"].value,
+        email: e.target.elements["email"].value,
+        identificacion: e.target.elements["identificacion"].value,
+        cuil: e.target.elements["cuil"].value,
+        fecha_nacimiento: e.target.elements["fecha_nacimiento"].value,
+
+    }
+    localStorage.setItem("registro", JSON.stringify(listRespuestas))
+    window.location.href = "./abrir-cuenta-form-2.html"
+
+})
+
+campoFormulario.forEach((campo) => {
+    campo.addEventListener("blur", () => verificarCampo(campo))
+    campo.addEventListener("invalid", evento => evento.preventDefault())
 });
-function verificarCampo(campo){
-    if(campo.name == "cuil" && campo.value.length >=11){
+
+function verificarCampo(campo) {
+    let mensaje = ""
+    campo.setCustomValidity("")
+    if (campo.name == "cuil" && campo.value.length >= 11) {
         esUnCuil(campo)
     }
-    if(campo.name == "fecha_nacimiento" && campo.value != ""){
-       esMayor(campo)
+    if (campo.name == "fecha_nacimiento" && campo.value != "") {
+        esMayor(campo)
     }
-    console.log(ValidityState);
+    // console.log(campo.validity);
+    tiposError.forEach(error => {
+        if (campo.validity[error]) {
+            mensaje = mensajes[campo.name][error]
+            console.log(mensaje);
+        }
+    })
+    const mensajeError = campo.parentNode.querySelector(".mensaje-error");
+    const validarInputCheck = campo.checkValidity()
+    if (!validarInputCheck) {
+        mensajeError.textContent = mensaje
+    } else {
+        mensajeError.textContent = ""
+    }
 }

@@ -2,16 +2,17 @@ export default function esUnCuil(campo){
     const cuil = campo.value.replace(/[-\/]/g, "");
     
     if(numerosRepetidos(cuil)){
-        console.log("Valores repetidos");
+            campo.setCustomValidity("Valores repetidos")
     }else{
         if(validarPrimerosDigitos(cuil) && validarDigVerificador(cuil)){
             console.log("cuil válido");
         }else{
-            console.log("cuil no válido");
+            campo.setCustomValidity("Cuil Inválido")
         }
     }
    
 }
+// 23-71012338-1 cuil válido 
 function numerosRepetidos(cuil){
     const numeroRep = [
         "00000000000",
