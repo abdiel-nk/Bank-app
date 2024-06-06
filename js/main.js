@@ -2,6 +2,7 @@ import esUnCuil from "./validar-cuil.js"
 import esMayor from "./validar-edad.js"
 import { tiposError, mensajes } from "./customeError.js"
 
+
 const campoFormulario = document.querySelectorAll("[required]");
 const formulario = document.querySelector("[data-formulario]");
 
